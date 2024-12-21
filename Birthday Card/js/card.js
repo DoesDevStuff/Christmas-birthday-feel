@@ -37,7 +37,7 @@ class Particle {
   draw() {
     ctx.fillStyle = `rgba(${255 - (Math.random() * 127.5)}, 255, 255, ${this.opacity})`;
     // size of the particles is determined here and how wide/ long too
-    ctx.fillRect(this.x, this.y, 0.75, Math.random() * 2 + 1);
+    ctx.fillRect(this.x, this.y, 0.75, Math.random() * 4 + 1);
   }
 }
 
