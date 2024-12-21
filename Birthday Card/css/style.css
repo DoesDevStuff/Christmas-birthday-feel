@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html, body {
+  background: #000000;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;  
+}
+
+.container {
+  position: relative; /* Ensures the content stays above the canvas */
+  z-index: 0; /* Keeps container (and SVG) above the canvas */
+  background: #13081b;
+  border-radius: 4px;
+  height: 60vh;
+  width: 65vw; /* Adjust width to give more space to the sections */
+  display: flex; /* Use flexbox to align text and SVG side by side */
+  padding: 1em; /* Padding inside the container */
+  box-sizing: border-box; /* Includes padding in the width and height calculation */
+  overflow: hidden;
+}
+
+.container:before {
+  content:"";
+  position: absolute;
+  border: 8px solid #27182b;
+  border-style: double;
+  width: calc(100% - 20px); /* 40px less to create padding of 20px on each side */
+  height: calc(100% - 20px); /* 40px less to create padding of 20px on each side */
+  left: 10px; /* Add space from the left edge */
+  top: 10px; /* Add space from the top edge */
+  border-radius: 4px; /* Ensure the border is rounded just like the container */
+  box-sizing: border-box; /* Ensures border is included in the element's size */
+}
+
+.bottom-left-image {
+  position: absolute;  /* Absolute positioning allows the image to be anchored */
+  bottom: 0;  /* Anchors the image to the bottom */
+  left: 0;    /* Anchors the image to the left */
+  width: 15%;  /* Adjust this percentage to control the size */
+  height: auto;  /* Ensures the aspect ratio is maintained */
+  object-fit: contain; /* Makes sure the image scales properly */
+}
+
+#particleCanvas {
+  position: absolute; /* Absolute positioning inside the container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Ensures canvas stays behind the other content */
+}
+
+.text {
+  color: #f9d7fa;
+  flex: 1;
+  text-align: center;
+  z-index: 2;
+  padding: 0.5em;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+svg {
+  width: auto; /* Maintain the aspect ratio of the SVG */
+  max-height: 80vh;
+  position: relative; /* Ensures the SVG stays above the canvas */
+  z-index: 2; /* Keeps the SVG above the canvas */
+  margin-left: 2em; /* Match the text left margin for consistent spacing */
+}
+
+#cat {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.shadow-1, .shadow-2 {
+  opacity: 0;
+}
+
+.muted {
+  opacity: 0.6;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1800px) {
+  .container {
+    flex-direction: column; /* Stack text and SVG vertically on smaller screens */
+    height: 50vh; /* Slightly adjust container size on smaller screens */
+    width: 60vw; /* More space for mobile and tablets */
+  }
+  
+  .text {
+    font-size: 0.75em; /* Reduce text size for mobile */
+  }
+  
+  svg {
+    max-height: 100vh; /* Further reduce the size of the SVG */
+    width: 100%; /* Allow SVG to scale down */
+    margin-left: 0; /* Ensure no extra margin */
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column; /* Stack text and SVG vertically on smaller screens */
+    height: 40vh; /* Slightly adjust container size on smaller screens */
+    width: 40vw; /* More space for mobile and tablets */
+  }
+  
+  .text {
+    
+    font-size: 0.55em; /* Reduce text size for mobile */
+  }
+  
+  svg {
+    max-height: 65vh; /* Further reduce the size of the SVG */
+    width: 100%; /* Allow SVG to scale down */
+    margin-left: 0; /* Ensure no extra margin */
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack text and SVG vertically on smaller screens */
+    height: 50vh; /* Adjust container height */
+    width: 80vw; /* Make container wider for small screens */
+  }
+  
+  .text {
+    padding-left: 0.8em; /* Adjust padding */
+    padding-right: 0.8em;
+    text-align: center; /* Center text for better readability */
+    margin-bottom: 0em; /* Give some space between text and SVG */
+    font-size: 0.65em; /* Reduce text size for mobile */
+  }
+  
+  svg {
+    max-height: 60vh; /* Further reduce the size of the SVG */
+    width: 100%; /* Allow SVG to scale down */
+    margin-left: 0; /* Ensure no extra margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column; /* Stack text and SVG vertically on smaller screens */
+    height: 50vh; /* Adjust container size further for very small screens */
+    width: 75vw; /* Make container even wider */
+    padding: 0.25em; /* Reduce padding to fit content */
+  }
+  
+  .text {
+    font-size: 0.55em; /* Reduce text size for mobile */
+    
+    padding-left: 0.8em; /* Adjust padding */
+    padding-right: 0.8em;
+    text-align: center; /* Center text for better readability */
+    margin-bottom: 0em; /* Give some space between text and SVG */
+  }
+  
+  svg {
+    max-height: 60vh; /* Further reduce the size of the SVG */
+    width: 100%; /* Allow SVG to scale down */
+    margin-left: 0; /* Ensure no extra margin */
+  }
+}
